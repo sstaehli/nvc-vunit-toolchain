@@ -19,4 +19,4 @@ push_image:
 	docker tag  build/nvc-vunit:$(TAG) $(REGISTRY)/containers/toolchains/nvc-vunit:$(TAG)
 	docker login $(REGISTRY)
 	docker push $(REGISTRY)/containers/toolchains/nvc-vunit:$(TAG)
-#	docker rmi  build/nvc-vunit:$(TAG)
+	docker rmi  build/nvc-vunit:$(TAG)
