@@ -1,11 +1,14 @@
-#/bin/bash
+#!/usr/bin/env bash
+REGISTRY=gitlab-registry.airhead.ch/containers/toolchains
+
 docker run -it \
     -e HOST_UID=$(id -u) \
     -e HOST_GID=$(id -g) \
     -v $(pwd):/workspace \
     -w /workspace \
     --rm \
-    build/nvc-vunit:latest \
+    $REGISTRY/nvc-vunit:latest \
     bash -lc \
         'groupadd -g "$HOST_GID" hostgroup; useradd -m -u "$HOST_UID" -g "$HOST_GID" hostuser; \
+            . /opt/venv/bin/activate && \
             exec gosu hostuser bash'
