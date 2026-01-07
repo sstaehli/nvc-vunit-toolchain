@@ -1,0 +1,11 @@
+#/bin/bash
+docker run -it \
+    -e HOST_UID=$(id -u) \
+    -e HOST_GID=$(id -g) \
+    -v $(pwd):/workspace \
+    -w /workspace \
+    --rm \
+    build/nvc-vunit:latest \
+    bash -lc \
+        'groupadd -g "$HOST_GID" hostgroup; useradd -m -u "$HOST_UID" -g "$HOST_GID" hostuser; \
+            exec gosu hostuser bash'

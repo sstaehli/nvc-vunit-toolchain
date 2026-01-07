@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 # source vivado settings
 source /opt/venv/bin/activate
 
-# Start bash
-exec bash
+# Start command
+exec "$@"
