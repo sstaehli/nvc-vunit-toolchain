@@ -22,4 +22,4 @@ jobs:
           
     - name: Publish
       run: |
-        docker push ghcr.io/${{ github.repository_owner }}/my-app:latest
+        docker push ghcr.io/${{ github.repository_owner }}/nvc-vunit:latest
