@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-REGISTRY=gitlab-registry.airhead.ch/containers/toolchains
+REGISTRY=ghcr.io/sstaehli
 
 docker run -it \
     -e HOST_UID=$(id -u) \
@@ -11,4 +11,4 @@ docker run -it \
     bash -lc \
         'groupadd -g "$HOST_GID" hostgroup; useradd -m -u "$HOST_UID" -g "$HOST_GID" hostuser; \
             . /opt/venv/bin/activate && \
-            exec gosu hostuser bash'
+            exec gosu hostuser python3 "$@"' -- "$@" 
